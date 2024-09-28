@@ -95,6 +95,9 @@ pip install opencv-python numpy
 - **Cloak Not Detected Properly:** Try using a bright, unique color—avoid colors that blend with your background or surroundings.
 - **No Effect When Wearing Cloak:** Hold the cloak in the center for authentication and ensure it’s a mono-color fabric.
 
+## Known Issue: MagicFrame Not Working
+**Issue Description:** The MagicFrame isn't working as intended. It should be the result of combining TheBackground and RestOfTheFrame, effectively producing the invisibility effect. However, instead of showing the invisibility magic, the MagicFrame is currently displaying the unchanged live webcam feed.
+
 ## License
 This project is open to all wizards and Muggles under the **MIT License**—feel free to use, modify, and share, so long as you don't use it for anything dark and sinister.
 
