@@ -95,10 +95,18 @@ pip install opencv-python numpy
 - **Cloak Not Detected Properly:** Try using a bright, unique color—avoid colors that blend with your background or surroundings.
 - **No Effect When Wearing Cloak:** Hold the cloak in the center for authentication and ensure it’s a mono-color fabric.
 
-## Known Issue: MagicFrame Not Working
-**Issue Description:** The MagicFrame isn't working as intended. It should be the result of combining TheBackground and RestOfTheFrame, effectively producing the invisibility effect. However, instead of showing the invisibility magic, the MagicFrame is currently displaying the unchanged live webcam feed.
-
 ## License
-This project is open to all wizards and Muggles under the **MIT License**—feel free to use, modify, and share, so long as you don't use it for anything dark and sinister.
+This project is open to all wizards and Muggles under the **Quidditch License**—feel free to use, modify, and share, so long as you don't use it for anything dark and sinister.
+
+## Quidditch License 🏆
+This project is licensed under the Quidditch License. All wizards, witches, and even non-magical folk are welcome to join the game, provided they follow these rules:
+
+- **Fair Play:** You are free to use, modify, and share this project, as long as your intentions are noble—no Bludgers aimed to harm, and no unfair plays (use it for learning and fun, not for dark purposes).
+
+- **Team Spirit:** Credit must be given to the original creators. Think of it as sharing the glory after catching the Golden Snitch—honor all members who contributed to the magic.
+
+- **No Exploiting the Snitch:** Do not use any part of this project for personal profit without prior permission. We don't want anyone turning a good game into an underhanded deal.
+
+- **Mischief Managed:** If you modify the project, include a clear description of what you changed, and ensure the magic doesn’t cause unintended chaos—every wizard and Muggle should be able to manage the mischief you've added.
 
 May your journey to mastering the magic of invisibility be filled with wonder and fun! ⚡✨
