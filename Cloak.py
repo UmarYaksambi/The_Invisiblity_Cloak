@@ -101,27 +101,39 @@ def disappear(capture):
         if cloak is None or background is None:
             print("Cloak or background has not been authenticated or is None!")
             return
-        # Convert frame to HSV
-        hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
-        # Define cloak color range with a wider tolerance
-        lower_bound = np.array([cloak[0] - 10, 50, 50])   # Adjust to fine tune
-        upper_bound = np.array([cloak[0] + 10, 255, 255])
 
-        # Mask of cloak (detecting the cloak region based on color)
+        hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
+        lower_bound = np.array([cloak[0] - 5, 50, 50])
+        upper_bound = np.array([cloak[0] + 5, 255, 255])
+
+        # Mask for detecting the cloak region
         mask = cv.inRange(hsv, lower_bound, upper_bound)
-            
-        # Mask of everything apart from Cloak (inverse mask)
         inverse_mask = cv.bitwise_not(mask)
 
+        # Extract the cloak region and the rest of the frame
         TheBackground = cv.bitwise_and(background, background, mask=mask)
         RestOfTheFrame = cv.bitwise_and(frame, frame, mask=inverse_mask)
-        MagicFrame = cv.add(TheBackground, RestOfTheFrame)
+
+        # Find the edges of the cloak to apply Gaussian blur
+        edges = cv.Canny(mask, 100, 200)  # Use Canny edge detection to find edges of the cloak
+        edges_blurred = cv.GaussianBlur(edges, (15, 15), 0)
+
+        # Create a blurred version of the cloak for a smooth edge transition
+        blurred_cloak = cv.GaussianBlur(TheBackground, (3, 3), 0)
+
+        # Create a mask where edges are highlighted
+        blurred_edges_mask = cv.inRange(edges_blurred, 1, 255)
+
+        # Combine the blurred cloak with the rest of the frame only at the edges
+        cloak_with_blurred_edges = cv.bitwise_and(blurred_cloak, blurred_cloak, mask=blurred_edges_mask)
+        cloak_without_blurred_edges = cv.bitwise_and(TheBackground, TheBackground, mask=cv.bitwise_not(blurred_edges_mask))
         
-        # MagicFrame = cv.GaussianBlur(MagicFrame, (15, 15), 0)
-        # Need to refine blur for just edges
+        combined_cloak = cv.add(cloak_with_blurred_edges, cloak_without_blurred_edges)
+        MagicFrame = cv.add(combined_cloak, RestOfTheFrame)
 
         cv.putText(MagicFrame, "Press Esc to exit ---", (10, frame.shape[0] - 10),
                    cv.FONT_HERSHEY_PLAIN, 1.0, (0, 255, 0), thickness=1)
+
         cv.imshow("Invisibility Cloak - Get ready to disappear!", MagicFrame)
 
 
