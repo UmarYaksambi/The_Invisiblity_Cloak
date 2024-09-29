@@ -12,7 +12,9 @@ def detect_humans(frame):
             cv.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
             cv.putText(frame, "Intruder Alert: Step Away for Cloak Activation", (x, y - 7), 
                        cv.FONT_HERSHEY_PLAIN, 0.5, (0, 255, 0), thickness=1)
-
+            
+    cv.imshow("Invisibility Cloak - Get ready to disappear!", frame)
+    
     return frame, person_detected
 
 
