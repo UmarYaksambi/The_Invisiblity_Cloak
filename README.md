@@ -95,6 +95,9 @@ pip install opencv-python numpy
 - **Cloak Not Detected Properly:** Try using a bright, unique color—avoid colors that blend with your background or surroundings.
 - **No Effect When Wearing Cloak:** Hold the cloak in the center for authentication and ensure it’s a mono-color fabric.
 
+## Credits
+- [Himashree Perumalla](https://github.com/hperumalla-oops): Thanks for the bug fixes and motivation😁
+
 ## License
 This project is open to all wizards and Muggles under the **Quidditch License**—feel free to use, modify, and share, so long as you don't use it for anything dark and sinister.
 
